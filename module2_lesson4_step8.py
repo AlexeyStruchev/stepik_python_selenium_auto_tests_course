@@ -1,10 +1,9 @@
 import time
-
+import math
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-import math
 
 try:
     def calc(x: int) -> str:
@@ -17,7 +16,7 @@ try:
     WebDriverWait(browser, 12).until(EC.text_to_be_present_in_element((By.ID, "price"), "$100"))
     browser.find_element(By.ID, "book").click()
 
-    value_element_to_calculate = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.ID, "input_value")))
+    value_element_to_calculate = WebDriverWait(browser, 4).until(EC.presence_of_element_located((By.ID, "input_value")))
     calculated_value = calc(value_element_to_calculate.text)
 
     answer_field = WebDriverWait(browser, 5).until(EC.element_to_be_clickable((By.ID, "answer")))
@@ -33,3 +32,4 @@ try:
 finally:
     time.sleep(10)
     browser.quit()
+    
